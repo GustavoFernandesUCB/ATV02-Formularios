@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input[type="file"] {
+            padding: 0;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Funcionário</h1>
+        <form id="employeeForm">
+            <div class="form-group">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Telefone:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" placeholder="XX-XXXX-XXXX" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dob">Data de Nascimento:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="position">Cargo:</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Departamento:</label>
+                <select id="department" name="department" required>
+                    <option value="">Selecione</option>
+                    <option value="hr">Recursos Humanos</option>
+                    <option value="it">Tecnologia da Informação</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="sales">Vendas</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Endereço:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="profilePicture">Foto do Perfil:</label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio real do formulário
+
+            // Validações e manipulação do formulário
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let dob = document.getElementById('dob').value;
+            let position = document.getElementById('position').value;
+            let department = document.getElementById('department').value;
+            let address = document.getElementById('address').value;
+            let profilePicture = document.getElementById('profilePicture').files[0];
+
+            if (!name || !email || !phone || !dob || !position || !department || !address) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            alert('Funcionário cadastrado com sucesso!');
+            
+        });
+    </script>
+</body>
+</html>
